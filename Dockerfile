@@ -18,7 +18,7 @@ RUN cmake -S /src -B /build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PA
 
 FROM debian:bookworm-slim
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates libssl3 zlib1g \
+    && apt-get install -y --no-install-recommends ca-certificates curl libssl3 zlib1g \
     && rm -rf /var/lib/apt/lists/* \
     && useradd --system --uid 10030 --home /var/lib/telegram-bot-api telegram
 COPY --from=build /usr/local/bin/telegram-bot-api /usr/local/bin/telegram-bot-api
