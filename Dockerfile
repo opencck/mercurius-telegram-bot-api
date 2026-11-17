@@ -11,9 +11,10 @@ RUN git clone --recursive https://github.com/tdlib/telegram-bot-api.git /src \
     && cd /src \
     && git checkout "$TELEGRAM_BOT_API_COMMIT" \
     && git submodule update --init --recursive
-# Two jobs: the compiler of tdlib takes several GB of memory per job
+# One job by default: the compiler of tdlib takes several GB of memory per job, and the host is shared
+ARG BUILD_JOBS=1
 RUN cmake -S /src -B /build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
-    && cmake --build /build --target install -j 2
+    && cmake --build /build --target install -j "$BUILD_JOBS"
 
 FROM debian:bookworm-slim
 RUN apt-get update \
