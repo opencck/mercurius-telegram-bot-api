@@ -1,6 +1,6 @@
 # A local Telegram Bot API server, built from the official sources at a pinned commit (no third-party image).
 # Optional: the compose profile telegram-api. In --local mode a bot downloads and sends files up to 2000 MB.
-# spec: BRIEF.md#telegram-прокси-и-локальный-сервер-bot-api-решение-владельца-2026-11-17
+# A module of the Mercurius agent: https://github.com/opencck/mercurius
 FROM debian:bookworm-slim AS build
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates git cmake g++ make gperf zlib1g-dev libssl-dev \
