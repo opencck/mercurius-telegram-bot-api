@@ -17,7 +17,8 @@ Build arguments: `TELEGRAM_BOT_API_COMMIT` (the pinned commit, Bot API 10.4) and
 compiler of tdlib takes several GB of memory per job).
 
 Files are kept in `/var/lib/telegram-bot-api`; the bot reads them at the path the server reports, so mount the same
-folder into the bot's container. The server listens on port 8081.
+folder into the bot's container. The server listens on port 8081. A watchdog asks it every minute; after three missed
+answers in a row the container stops and Docker starts it again.
 
 ## Run
 
