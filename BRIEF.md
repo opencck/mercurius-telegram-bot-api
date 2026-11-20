@@ -70,6 +70,6 @@
   `TELEGRAM_API_HASH`, `TELEGRAM_FILE_LIMIT_MB` (по умолчанию 200), `TELEGRAM_PROXY`.
 - Вернуть бота в облако Telegram даёт только через 10 минут после `logOut`.
 - Спецификация:
-  [Telegram: прокси и локальный сервер Bot API](../../brief/channels.md#telegram-прокси-и-локальный-сервер-bot-api-решение-владельца-2026-11-17),
+  [Telegram: прокси и локальный сервер Bot API](../../brief/channels.md#telegram-прокси-и-локальный-сервер-bot-api),
   [Модули: сервисы, MCP и скиллы](../../brief/skills-mcp.md#модули-сервисы-mcp-и-скиллы),
   [Входящие вложения](../../brief/internet.md#входящие-вложения).
