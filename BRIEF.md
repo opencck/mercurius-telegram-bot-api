@@ -13,7 +13,7 @@
 - передаёт HTTP-прокси из `TELEGRAM_PROXY` для исходящих запросов webhook;
 - следит, что сервер отвечает, и останавливает зависший контейнер.
 
-Остаётся в приложении (`src/Infrastructure/Config/TelegramSettings.php`, `boot/04-channel.php`, пакет
+Остаётся в приложении (`src/Infrastructure/Config/TelegramSettings.php`, `bootstrap/04-channel.php`, пакет
 `packages/messenger`):
 
 - выбор между облаком и локальным сервером (`TELEGRAM_API_URL`);
