@@ -1,5 +1,7 @@
 [English](README.md) | [Русский](README.ru.md) | **中文**
 
+> 本文由模型翻译，尚未经人工审校；如有出入，以英文版为准。
+
 # mercurius-telegram-bot-api
 
 本地 [Telegram Bot API 服务器](https://github.com/tdlib/telegram-bot-api)，从官方源码在固定的提交上构建，不使用第三方镜像。它是 [Mercurius](https://github.com/opencck/mercurius) 的一个模块，也可以
