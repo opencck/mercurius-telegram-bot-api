@@ -22,7 +22,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && useradd --system --uid 10030 --home /var/lib/telegram-bot-api telegram
 COPY --from=build /usr/local/bin/telegram-bot-api /usr/local/bin/telegram-bot-api
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY entrypoint.sh probe.sh /usr/local/bin/
 USER telegram
 EXPOSE 8081
+# The same check as the watchdog's: the bot answers, not only the port (probe.sh). The state is seen in docker compose ps
+# and docker compose up --wait waits for it; the restart itself is the watchdog's (Docker does not restart an unhealthy
+# container). The first minutes the server logs the bot in anew.
+HEALTHCHECK --interval=60s --timeout=30s --start-period=300s --retries=3 CMD sh /usr/local/bin/probe.sh >/dev/null
 ENTRYPOINT ["/bin/sh", "/usr/local/bin/entrypoint.sh"]

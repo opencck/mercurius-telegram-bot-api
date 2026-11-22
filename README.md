@@ -12,13 +12,15 @@ used on its own. In `--local` mode a bot downloads and sends files up to 2000 MB
 |---|---|
 | `TELEGRAM_API_ID`, `TELEGRAM_API_HASH` | required, from [my.telegram.org](https://my.telegram.org) |
 | `TELEGRAM_PROXY` | an `http://` or `https://` proxy for the server's outgoing webhook requests; other kinds are ignored |
+| `TELEGRAM_BOT_TOKEN` | optional: the token of the bot, for the health check (`getMe` and the webhook queue); without it only the port is checked |
 
 Build arguments: `TELEGRAM_BOT_API_COMMIT` (the pinned commit, Bot API 10.4) and `BUILD_JOBS` (1 by default: the
 compiler of tdlib takes several GB of memory per job).
 
 Files are kept in `/var/lib/telegram-bot-api`; the bot reads them at the path the server reports, so mount the same
-folder into the bot's container. The server listens on port 8081. A watchdog asks it every minute; after three missed
-answers in a row the container stops and Docker starts it again.
+folder into the bot's container. The server listens on port 8081. The image checks that the bot answers, not only the port
+(`probe.sh`, the healthcheck): `getMe` within 10 s and a webhook queue that goes down. A watchdog runs the same check
+every minute after the first five; after three misses in a row the container stops and Docker starts it again.
 
 ## Run
 

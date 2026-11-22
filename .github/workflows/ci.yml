@@ -23,4 +23,4 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - run: sh -n entrypoint.sh && shellcheck entrypoint.sh
+      - run: sh -n entrypoint.sh && sh -n probe.sh && shellcheck entrypoint.sh probe.sh
